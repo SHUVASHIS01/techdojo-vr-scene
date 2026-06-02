@@ -59,6 +59,7 @@ A complete 3D web application that allows users to sign up, log in, and interact
 - Both services require CORS and Cookie settings to support `withCredentials: true` and `SameSite: "none"` over HTTPS.
 
 ## 🎨 Design Decisions
+- **Orthographic Camera:** Switched from PerspectiveCamera to OrthographicCamera to eliminate perspective-based size distortion when compositing 3D objects over a flat background image. This ensures all objects maintain consistent visual size regardless of their position in the scene.
 - **Camera Controls (Important):** Camera zoom and rotation are intentionally disabled to maintain visual consistency between the 3D canvas layer and the CSS background room image. Only panning is enabled, which keeps the illusion of objects sitting inside the room seamless.
 
 ## 🧗 Challenges Faced

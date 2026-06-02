@@ -4,13 +4,12 @@ export function useSceneObjects() {
   const [objects, setObjects] = useState([]);
 
   const addObject = (type) => {
-    const id = crypto.randomUUID();
-    const position = [
-      Math.random() * 8 - 4,
-      0.5,
-      Math.random() * 8 - 4
-    ];
-    setObjects(prev => [...prev, { id, type, position }]);
+    const newObj = {
+      id: Date.now().toString(),
+      type,
+      position: [(Math.random() * 6) - 3, 0.5, (Math.random() * 4) - 2]
+    };
+    setObjects([...objects, newObj]);
   };
 
   const updateObjectPosition = (id, newPosition) => {

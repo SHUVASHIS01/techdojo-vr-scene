@@ -9,7 +9,8 @@ export default function Scene({ objects = [], updateObjectPosition }) {
 
   return (
     <Canvas 
-      camera={{ position: [0, 3, 8], fov: 50 }}
+      orthographic
+      camera={{ zoom: 120, position: [0, 5, 10], near: 0.1, far: 1000 }}
       gl={{ alpha: true }}
       style={{ background: 'transparent', position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 1 }}
       shadows
@@ -25,7 +26,7 @@ export default function Scene({ objects = [], updateObjectPosition }) {
       
       {/* Invisible floor plane for raycasting */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} visible={false}>
-        <planeGeometry args={[50, 50]} />
+        <planeGeometry args={[100, 100]} />
         <meshStandardMaterial transparent opacity={0} />
       </mesh>
 
