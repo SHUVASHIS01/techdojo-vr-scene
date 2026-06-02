@@ -19,7 +19,7 @@ export default function Toolbar({ onAddClick, onSaveClick, onLogoutClick, saving
         </button>
         <button 
           onClick={onLogoutClick}
-          style={{ padding: '10px 20px', borderRadius: '8px', backgroundColor: 'transparent', color: '#fff', border: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer' }}
+          style={{ padding: '10px 20px', borderRadius: '8px', backgroundColor: '#1d3557', color: '#fff', border: 'none', cursor: 'pointer' }}
         >
           Logout
         </button>

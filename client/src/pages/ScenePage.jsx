@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Scene from '../components/Scene';
 import Toolbar from '../components/Toolbar';
 import AddObjectDialog from '../components/AddObjectDialog';
@@ -10,6 +11,7 @@ import * as sceneApi from '../api/sceneApi';
 export default function ScenePage() {
   const { objects, setObjects, addObject, updateObjectPosition } = useSceneObjects();
   const { logout } = useAuth();
+  const navigate = useNavigate();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -40,13 +42,18 @@ export default function ScenePage() {
     }
   };
 
+  const handleLogout = async () => {
+    await logout();
+    navigate('/login');
+  };
+
   return (
     <div className="scene-wrapper">
       <div className="room-background" />
       <Toolbar 
         onAddClick={() => setIsDialogOpen(true)} 
         onSaveClick={handleSave} 
-        onLogoutClick={logout} 
+        onLogoutClick={handleLogout} 
         saving={saving}
       />
       
