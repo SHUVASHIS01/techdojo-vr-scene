@@ -5,52 +5,21 @@ export default function Toolbar({ onAddClick, onSaveClick, onLogoutClick, saving
         <button 
           onClick={onSaveClick}
           disabled={saving}
-          style={{ 
-            padding: '8px 24px', 
-            borderRadius: '999px', 
-            backgroundColor: '#ed1c24', 
-            color: '#fff', 
-            border: '3px solid #000', 
-            cursor: saving ? 'not-allowed' : 'pointer',
-            fontWeight: 'bold',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            fontSize: '15px'
-          }}
+          style={{ padding: '10px 20px', borderRadius: '8px', backgroundColor: '#e63946', color: '#fff', border: 'none', cursor: saving ? 'not-allowed' : 'pointer' }}
         >
-          {saving ? 'Saving...' : 'Save'} <span style={{fontWeight: '900'}}>&gt;</span>
+          {saving ? 'Saving...' : 'Save'}
         </button>
       </div>
-      <div style={{ position: 'absolute', top: 20, right: 20, zIndex: 10, display: 'flex', gap: '15px' }}>
+      <div style={{ position: 'absolute', top: 20, right: 20, zIndex: 10, display: 'flex', gap: '10px' }}>
         <button 
           onClick={onAddClick}
-          style={{ 
-            padding: '8px 24px', 
-            borderRadius: '999px', 
-            backgroundColor: '#ed1c24', 
-            color: '#fff', 
-            border: '3px solid #000', 
-            cursor: 'pointer',
-            fontWeight: 'bold',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            fontSize: '15px'
-          }}
+          style={{ padding: '10px 20px', borderRadius: '8px', backgroundColor: '#e63946', color: '#fff', border: 'none', cursor: 'pointer' }}
         >
-          <span style={{fontWeight: '900'}}>&lt;</span> Add Object
+          Add Object
         </button>
         <button 
           onClick={onLogoutClick}
-          style={{ 
-            padding: '8px 20px', 
-            borderRadius: '8px', 
-            backgroundColor: 'rgba(0,0,0,0.4)', 
-            color: '#fff', 
-            border: '1px solid rgba(255,255,255,0.2)', 
-            cursor: 'pointer' 
-          }}
+          style={{ padding: '10px 20px', borderRadius: '8px', backgroundColor: 'transparent', color: '#fff', border: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer' }}
         >
           Logout
         </button>
