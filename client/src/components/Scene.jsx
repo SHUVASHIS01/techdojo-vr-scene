@@ -1,7 +1,8 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
+import SceneObject from './SceneObject';
 
-export default function Scene() {
+export default function Scene({ objects = [], updateObjectPosition }) {
   return (
     <div style={{ width: '100vw', height: '100vh', backgroundColor: '#1a1a2e' }}>
       <Canvas camera={{ position: [0, 5, 10], fov: 50 }}>
@@ -16,6 +17,14 @@ export default function Scene() {
 
         <Environment preset="city" />
         
+        {objects.map(obj => (
+          <SceneObject 
+            key={obj.id} 
+            {...obj} 
+            updatePosition={(pos) => updateObjectPosition(obj.id, pos)}
+          />
+        ))}
+
         <OrbitControls makeDefault />
       </Canvas>
     </div>
