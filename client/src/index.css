@@ -14,3 +14,8 @@ body {
 button {
   font-family: inherit;
 }
+
+@keyframes slideIn {
+  from { top: -50px; opacity: 0; }
+  to { top: 20px; opacity: 1; }
+}
