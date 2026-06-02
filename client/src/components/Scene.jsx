@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Environment, SoftShadows } from '@react-three/drei';
+import { OrbitControls, Environment } from '@react-three/drei';
 import * as THREE from 'three';
 import SceneObject from './SceneObject';
 
@@ -14,7 +14,7 @@ export default function Scene({ objects = [], updateObjectPosition }) {
       style={{ background: 'transparent', position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 1 }}
       shadows
     >
-      <SoftShadows size={15} samples={10} focus={0.5} />
+
       <ambientLight intensity={0.8} />
       <directionalLight 
         position={[-10, 10, 5]} 
