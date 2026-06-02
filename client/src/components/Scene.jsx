@@ -2,17 +2,18 @@ import { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
 import SceneObject from './SceneObject';
-import heroBg from '../assets/hero.png';
 
 export default function Scene({ objects = [], updateObjectPosition }) {
   const [controlsEnabled, setControlsEnabled] = useState(true);
+
+  const roomImageUrl = 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop';
 
   return (
     <div style={{ 
       width: '100vw', 
       height: '100vh', 
       backgroundColor: '#1a1a2e',
-      backgroundImage: `url(${heroBg})`,
+      backgroundImage: `url(${roomImageUrl})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     }}>
