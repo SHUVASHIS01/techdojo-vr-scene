@@ -4,6 +4,7 @@ import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import authRoutes from './routes/auth.js';
 
 dotenv.config();
 
@@ -38,6 +39,9 @@ app.use(session({
     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
   }
 }));
+
+// Routes
+app.use('/api/auth', authRoutes);
 
 // Basic route
 app.get('/api/health', (req, res) => {
