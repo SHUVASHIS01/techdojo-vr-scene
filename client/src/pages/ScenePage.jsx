@@ -43,7 +43,7 @@ export default function ScenePage() {
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
       <Toolbar 
-        onAddClick={() => setIsDialogOpen(true)} 
+        onAddClick={() => setIsDialogOpen(!isDialogOpen)} 
         onSaveClick={handleSave} 
         onLogoutClick={logout} 
         saving={saving}
