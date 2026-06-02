@@ -13,6 +13,16 @@ body {
 
 button {
   font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(1px);
 }
 
 @keyframes slideIn {
