@@ -13,16 +13,16 @@ export default function AddObjectDialog({ onAdd, onClose }) {
             Cube
           </label>
           <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
-            <input type="radio" name="objectType" value="sphere" checked={selectedType === 'sphere'} onChange={(e) => setSelectedType(e.target.value)} />
-            Sphere
+            <input type="radio" name="objectType" value="cylinder" checked={selectedType === 'cylinder'} onChange={(e) => setSelectedType(e.target.value)} />
+            Cylinder
           </label>
           <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
             <input type="radio" name="objectType" value="model1" checked={selectedType === 'model1'} onChange={(e) => setSelectedType(e.target.value)} />
-            Custom Model 1 (Box)
+            Duck (3D Model)
           </label>
           <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
             <input type="radio" name="objectType" value="model2" checked={selectedType === 'model2'} onChange={(e) => setSelectedType(e.target.value)} />
-            Custom Model 2 (Avocado)
+            Avocado (3D Model)
           </label>
         </div>
         <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>

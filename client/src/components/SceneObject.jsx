@@ -64,10 +64,10 @@ function ObjectMesh({ type, isDragging }) {
       </mesh>
     );
   }
-  if (type === 'sphere') {
+  if (type === 'cylinder') {
     return (
       <mesh castShadow>
-        <sphereGeometry args={[0.5, 32, 32]} />
+        <cylinderGeometry args={[0.5, 0.5, 1, 32]} />
         <meshStandardMaterial color="#457b9d" {...materialProps} />
       </mesh>
     );
