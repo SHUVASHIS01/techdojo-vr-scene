@@ -3,7 +3,7 @@
 A complete 3D web application that allows users to sign up, log in, and interact with a 3D scene by adding, dragging, and saving 3D objects. Built for a technical interview submission.
 
 ## 🔗 Links
-- **Live Demo**: [Live Vercel URL here (update after deployment)](#)
+- **Live Demo**: [https://techdojo-vr-scene.vercel.app](https://techdojo-vr-scene.vercel.app)
 - **GitHub Repository**: [https://github.com/SHUVASHIS01/techdojo-vr-scene](https://github.com/SHUVASHIS01/techdojo-vr-scene)
 
 ## 🛠️ Tech Stack
@@ -11,7 +11,7 @@ A complete 3D web application that allows users to sign up, log in, and interact
 - **Backend**: Express.js (Node.js REST API)
 - **Database**: MongoDB Atlas (Mongoose ODM)
 - **Auth**: Express-session + bcryptjs + connect-mongo
-- **Hosting**: Vercel (Frontend) + Render (Backend)
+- **Hosting**: Vercel (Full-stack Native Monorepo via Serverless Functions)
 
 ## ✨ Features
 - [x] Full-stack user authentication (Signup, Login, Logout)
@@ -32,31 +32,34 @@ A complete 3D web application that allows users to sign up, log in, and interact
    cd techdojo-vr-scene
    ```
 
-2. **Backend Setup:**
+2. **Install Dependencies:**
    ```bash
-   cd server
    npm install
-   # Copy the example environment variables
-   cp .env.example .env 
-   # Run the server (starts on http://localhost:5000)
-   npm start
+   cd api && npm install && cd ..
    ```
 
-3. **Frontend Setup:**
+3. **Environment Setup:**
    ```bash
-   cd ../client
-   npm install
-   # Copy the example environment variables
+   # Copy environment files for both frontend and backend
    cp .env.example .env
-   # Start the Vite development server
+   cp api/.env.example api/.env
+   ```
+
+4. **Run Locally:**
+   ```bash
+   # Terminal 1: Start the Vite frontend (starts on http://localhost:5173)
    npm run dev
+
+   # Terminal 2: Start the Express backend (starts on http://localhost:5000)
+   cd api
+   npm start
    ```
 
 ## 🚀 Deployment Notes
 
-- **Backend (Render):** Connected via GitHub. Environment variables set in the dashboard (`MONGODB_URI`, `SESSION_SECRET`, `CLIENT_URL`, `NODE_ENV=production`).
-- **Frontend (Vercel):** Configured as a Vite project. The `VITE_API_URL` environment variable is set to the Render backend URL.
-- Both services require CORS and Cookie settings to support `withCredentials: true` and `SameSite: "none"` over HTTPS.
+- **Hosting (Vercel):** The repository is configured as a native Vercel project. The frontend runs as a Vite SPA at the root, and the backend is automatically compiled into Vercel Serverless Functions via the `/api` directory.
+- **Environment Variables:** Set in the Vercel dashboard (`MONGODB_URI`, `SESSION_SECRET`, `VITE_API_URL` should be your full Vercel domain, and `NODE_ENV=production`).
+- **Proxy:** Express backend explicitly trusts the Vercel proxy (`app.set('trust proxy', 1)`) to ensure secure, cross-origin HTTP-only session cookies persist in production.
 
 ## 🎨 Design Decisions
 - **Orthographic Camera:** Switched from PerspectiveCamera to OrthographicCamera to eliminate perspective-based size distortion when compositing 3D objects over a flat background image. This ensures all objects maintain consistent visual size regardless of their position in the scene.
