@@ -5,6 +5,7 @@ import MongoStore from 'connect-mongo';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js';
+import sceneRoutes from './routes/scene.js';
 
 dotenv.config();
 
@@ -42,6 +43,7 @@ app.use(session({
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/scene', sceneRoutes);
 
 // Basic route
 app.get('/api/health', (req, res) => {
