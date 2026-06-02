@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
 import SceneObject from './SceneObject';
 
 export default function Scene({ objects = [], updateObjectPosition }) {
+  const [controlsEnabled, setControlsEnabled] = useState(true);
+
   return (
     <div style={{ width: '100vw', height: '100vh', backgroundColor: '#1a1a2e' }}>
       <Canvas camera={{ position: [0, 5, 10], fov: 50 }}>
@@ -22,10 +25,11 @@ export default function Scene({ objects = [], updateObjectPosition }) {
             key={obj.id} 
             {...obj} 
             updatePosition={(pos) => updateObjectPosition(obj.id, pos)}
+            setControlsEnabled={setControlsEnabled}
           />
         ))}
 
-        <OrbitControls makeDefault />
+        <OrbitControls makeDefault enabled={controlsEnabled} />
       </Canvas>
     </div>
   );
