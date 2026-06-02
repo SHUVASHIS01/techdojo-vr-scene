@@ -11,7 +11,7 @@ export default function Scene({ objects = [], updateObjectPosition }) {
     <Canvas 
       camera={{ position: [0, 3, 8], fov: 50 }}
       gl={{ alpha: true }}
-      style={{ background: 'transparent', position: 'absolute', top: 0, left: 0 }}
+      style={{ background: 'transparent', position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 1 }}
       shadows
     >
       <SoftShadows size={15} samples={10} focus={0.5} />
