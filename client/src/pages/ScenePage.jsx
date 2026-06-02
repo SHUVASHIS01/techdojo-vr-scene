@@ -41,7 +41,8 @@ export default function ScenePage() {
   };
 
   return (
-    <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
+    <div className="scene-wrapper">
+      <div className="room-background" />
       <Toolbar 
         onAddClick={() => setIsDialogOpen(true)} 
         onSaveClick={handleSave} 

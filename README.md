@@ -58,6 +58,9 @@ A complete 3D web application that allows users to sign up, log in, and interact
 - **Frontend (Vercel):** Configured as a Vite project. The `VITE_API_URL` environment variable is set to the Render backend URL.
 - Both services require CORS and Cookie settings to support `withCredentials: true` and `SameSite: "none"` over HTTPS.
 
+## 🎨 Design Decisions
+- **Camera Controls (Important):** Camera zoom and rotation are intentionally disabled to maintain visual consistency between the 3D canvas layer and the CSS background room image. Only panning is enabled, which keeps the illusion of objects sitting inside the room seamless.
+
 ## 🧗 Challenges Faced
 - **3D Drag & Drop**: Calculating 3D intersections correctly without breaking the OrbitControls.
   - *Solution*: Leveraged `@use-gesture/react` and Three.js Raycaster against a mathematical `THREE.Plane` representing the floor (Y=0) to lock the Y-axis. Disabled `OrbitControls` conditionally during drag events.

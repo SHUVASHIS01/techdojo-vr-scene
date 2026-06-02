@@ -1,45 +1,56 @@
 import { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Environment } from '@react-three/drei';
+import { OrbitControls, Environment, SoftShadows } from '@react-three/drei';
+import * as THREE from 'three';
 import SceneObject from './SceneObject';
 
 export default function Scene({ objects = [], updateObjectPosition }) {
   const [controlsEnabled, setControlsEnabled] = useState(true);
 
-  const roomImageUrl = 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop';
-
   return (
-    <div style={{ 
-      width: '100vw', 
-      height: '100vh', 
-      backgroundColor: '#1a1a2e',
-      backgroundImage: `url(${roomImageUrl})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
-    }}>
-      <Canvas camera={{ position: [0, 5, 10], fov: 50 }}>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[10, 10, 5]} intensity={1} />
-        
-        {/* Invisible floor plane for raycasting */}
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} visible={false}>
-          <planeGeometry args={[100, 100]} />
-          <meshStandardMaterial />
-        </mesh>
+    <Canvas 
+      camera={{ position: [0, 3, 8], fov: 50 }}
+      gl={{ alpha: true }}
+      style={{ background: 'transparent', position: 'absolute', top: 0, left: 0 }}
+      shadows
+    >
+      <SoftShadows size={15} samples={10} focus={0.5} />
+      <ambientLight intensity={0.8} />
+      <directionalLight 
+        position={[-10, 10, 5]} 
+        intensity={1} 
+        castShadow 
+        shadow-mapSize={[1024, 1024]}
+      />
+      
+      {/* Invisible floor plane for raycasting */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} visible={false}>
+        <planeGeometry args={[50, 50]} />
+        <meshStandardMaterial transparent opacity={0} />
+      </mesh>
 
-        <Environment preset="city" />
-        
-        {objects.map(obj => (
-          <SceneObject 
-            key={obj.id} 
-            {...obj} 
-            updatePosition={(pos) => updateObjectPosition(obj.id, pos)}
-            setControlsEnabled={setControlsEnabled}
-          />
-        ))}
+      <Environment preset="city" />
+      
+      {objects.map(obj => (
+        <SceneObject 
+          key={obj.id} 
+          {...obj} 
+          updatePosition={(pos) => updateObjectPosition(obj.id, pos)}
+          setControlsEnabled={setControlsEnabled}
+        />
+      ))}
 
-        <OrbitControls makeDefault enabled={controlsEnabled} />
-      </Canvas>
-    </div>
+      <OrbitControls 
+        makeDefault 
+        enabled={controlsEnabled} 
+        enableZoom={false}
+        enableRotate={false}
+        enablePan={true}
+        panSpeed={0.6}
+        mouseButtons={{
+          LEFT: THREE.MOUSE.PAN
+        }}
+      />
+    </Canvas>
   );
 }

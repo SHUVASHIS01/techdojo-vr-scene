@@ -25,6 +25,33 @@ button:active:not(:disabled) {
   transform: translateY(1px);
 }
 
+.scene-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.room-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/room-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+canvas {
+  position: absolute !important;
+  inset: 0;
+  z-index: 1;
+}
+
+.toolbar {
+  position: absolute;
+  z-index: 2;
+}
+
 @keyframes slideIn {
   from { top: -50px; opacity: 0; }
   to { top: 20px; opacity: 1; }
